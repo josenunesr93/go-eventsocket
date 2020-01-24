@@ -188,7 +188,7 @@ func (h *Connection) readOne() bool {
 		}
 		h.cmd <- resp
 	case "api/response":
-		if string(resp.Body[:2]) == "-E" {
+		if string(resp.Body[:1]) == "-E" {
 			h.err <- errors.New(string(resp.Body)[5:])
 			return true
 		}
